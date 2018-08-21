@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Survey Results</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container" style="width: 650px;">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 id="survey-title" class="text-center">Survey Results</h1>
+
+          <form id="add-title" onSubmit="App.addTitle(); return false;">
+            <hr/>
+            <div class="input-group">
+              <span class="input-group-addon">Add</span>
+              <input id="input-title" type="text" class="form-control" name="msg" placeholder="change survey question">
+            </div>
+            <br/>
+          </form>
+          
+          <div id="create-survey" class="alert alert-warning fade in text-center"><strong>No any survey available at the moment.</strong><br> Please connect under contract manager account to create one.</div>
+          <!-- <hr/> -->
+          <!-- <br/> -->
+          <div id="loader">
+            <p class="text-center">Loading...</p>
+          </div>
+          <div id="content" style="display: none;">
+            
+            <form id="add-choice" onSubmit="App.addChoice(); return false;">
+              <div class="input-group">
+                <span class="input-group-addon">Add</span>
+                <input id="input-choice" type="text" class="form-control" name="msg" placeholder="add an answer">
+              </div>
+              <hr/>
+            </form>
+
+            <table class="table" id="table-survey">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Votes</th>
+                </tr>
+              </thead>
+              <tbody id="choicesResults">
+              </tbody>
+            </table>
+            <hr/>
+            <form id="form-vote" onSubmit="App.castVote(); return false;">
+              <div class="form-group">
+                <label for="choicesSelect">Select Candidate</label>
+                <select class="form-control" id="choicesSelect">
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Vote</button>
+              <hr />
+            </form>
+            <div id="error-message" class="alert alert-danger"></div>
+            <p class="text-center alert alert-info"><strong>Contract Manager: </strong><span id="contractManager"></span></p>
+            <p class="text-center alert alert-success"><strong>Your Account: </strong><span id="accountAddress"></span></p>
+            <!-- <input type="button" class="btn btn-info" value="Reload Page" onClick="App.reloadPage();"> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
